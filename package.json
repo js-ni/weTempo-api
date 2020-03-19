@@ -1,0 +1,23 @@
+{
+  "name": "api-commu",
+  "version": "1.0.0",
+  "description": "api for public context",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/api-commu.git"
+  },
+  "keywords": [
+    "nodejs",
+    "git",
+    "expressjs",
+    "community",
+    "rest",
+    "graphql"
+  ],
+  "author": "boyk <clenondavis@outlook.com>",
+  "license": "ISC"
+}
