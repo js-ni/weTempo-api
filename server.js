@@ -9,7 +9,7 @@
 //#region lib
 import express from "express";
 import bodyParser from "body-parser";
-// import EndPoints from "./server/endpoint";
+import GlobEndpoint from "./common/endpoint";
 //#endregion
 
 const app = express();
@@ -18,7 +18,7 @@ const port = 7000;
 // app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(EndPoints);
+app.use(GlobEndpoint);
 
 app.listen(port, () =>
   console.log(
