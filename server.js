@@ -13,7 +13,7 @@ import GlobEndpoint from "./common/endpoint";
 //#endregion
 
 const app = express();
-const port = 7000;
+const port = process.env.PORT || 7000;
 
 // app.use(morgan('combined'));
 app.use(bodyParser.json());
