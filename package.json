@@ -19,5 +19,9 @@
     "graphql"
   ],
   "author": "boyk <clenondavis@outlook.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "v11.11.0",
+    "npm": "6.7.0"
+  }
 }
