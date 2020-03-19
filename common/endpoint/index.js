@@ -10,9 +10,9 @@ import express from "express";
 
 const GlobEndpoints = express();
 
-GlobEndpoints.get("/", (req, res) => {
+GlobEndpoints.get("/api/rest/v1.0.0", (req, res) => {
   res.json({
-    message: "Hello this is public community api"
+    message: "Hello this is the rest public community api"
   });
 });
 
