@@ -19,7 +19,7 @@
     "rest",
     "graphql"
   ],
-  "author": "boyk <clenondavis@outlook.com>",
+  "author": "boyk/clenondavis <clenondavis@outlook.com>",
   "license": "ISC",
   "engines": {
     "node": "v11.11.0",
