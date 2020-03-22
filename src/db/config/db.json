@@ -1,5 +1,5 @@
 {
-  "local": {
+  "development": {
     "username": "potter",
     "password": "hokuspokus",
     "database": "wetempo",
