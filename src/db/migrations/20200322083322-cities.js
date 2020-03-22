@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING, allowNull: true, unique: true
       },
       cardinal: {
-        type: Sequelize.JSON, allowNull: false, unique: true
+        type: Sequelize.STRING, allowNull: false, unique: true
       }
     });
   },
