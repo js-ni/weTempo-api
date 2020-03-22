@@ -13,4 +13,5 @@ import request from "superagent";
 
 export const allCities = async () =>
   await request.get("https://app.deta.sh/hw6g4zdvlmao/");
+
 export const test = () => {};

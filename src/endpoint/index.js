@@ -8,7 +8,7 @@
 import express from "express";
 //#endregion
 //#region endpoint
-import citiesRoutes from "./citites";
+import citiesRoutes from "./cities";
 //#endregion
 
 const endpoints = express();
