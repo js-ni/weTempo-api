@@ -12,9 +12,5 @@ import request from "superagent";
 //#endregion
 
 export const cities = async () =>
-  // await request.get("https://app.deta.sh/hw6g4zdvlmao/");
-  await request.get(
-    "file:///C:/Users/CLeno/Downloads/World%20Wind%20Speeds.html"
-  );
-
+  await request.get("https://app.deta.sh/hw6g4zdvlmao/");
 export const test = () => {};
