@@ -1,6 +1,6 @@
 /**
- * @name Endpoint
- * @memberof common/endpoint
+ * @name Rest/Endpoint
+ * @memberof rest/endpoint
  * @type {Object}
  * @return {Object} List of global endpoint, define if is REST or GRAPHQL Schema
  */
@@ -8,11 +8,11 @@
 import express from "express";
 //#endregion
 //#region endpoint
-import RestEndpoints from "../../rest/endpoint";
+import citiesRoutes from "./citites";
 //#endregion
 
-const GlobEndpoints = express();
+const endpoints = express();
 
-GlobEndpoints.use(RestEndpoints);
+endpoints.use(citiesRoutes);
 
-export default GlobEndpoints;
+export default endpoints;

@@ -12,14 +12,14 @@ import cheerio from "cheerio";
 import { routes } from "../../settings";
 //#endregion
 //#region service
-import * as cities from "../../services/weTempo/cities";
+import { allCities } from "../../services/cities";
 //#endregion
 
-const RestEndpoint = express();
-const { weTempo } = routes;
+const citiesEnd = express();
+const { citiesRt } = routes;
 
-RestEndpoint.get(weTempo.cities, (req, res) => {
-  cities.cities().then(({ text }) => {
+citiesEnd.get(citiesRt.all, (req, res) => {
+  allCities().then(({ text }) => {
     //#region TODO: send this logic to a common context
     //this context should return the array of object with
     //each city info
@@ -42,4 +42,4 @@ RestEndpoint.get(weTempo.cities, (req, res) => {
   });
 });
 
-export default RestEndpoint;
+export default citiesEnd;

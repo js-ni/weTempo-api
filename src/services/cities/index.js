@@ -11,6 +11,6 @@
 import request from "superagent";
 //#endregion
 
-export const cities = async () =>
+export const allCities = async () =>
   await request.get("https://app.deta.sh/hw6g4zdvlmao/");
 export const test = () => {};
