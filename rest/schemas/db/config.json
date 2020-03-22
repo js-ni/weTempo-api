@@ -1,0 +1,9 @@
+{
+  "local": {
+    "username": "potter",
+    "password": "hokuspokus",
+    "database": "wetempo",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
