@@ -6,7 +6,6 @@
  */
 //#region lib
 import express from "express";
-import cheerio from "cheerio";
 //#endregion
 //#region settings
 import { routes } from "../../settings";
@@ -25,12 +24,6 @@ const { observationsRt } = routes;
  * @param {STRING} url  - url for express verb
  * @param {Fn} function - closure
  */
-endpoint.get(observationsRt.all, (req, res) => {
-  const { coords, winSpeeds } = allCities();
-  res.json({
-    coords,
-    winSpeeds
-  });
-});
+endpoint.get(observationsRt.all, (req, res) => {});
 
 export default endpoint;

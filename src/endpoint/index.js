@@ -6,9 +6,17 @@
  * @author boykland/clenondavis <clenondavis@outlook.com>
  */
 
+//#region lib
+import express from "express";
+//#endregion
 //#region endpoint
 import citiesEnd from "./cities";
 import observationEnd from "./observation";
 //#endregion
 
-export { citiesEnd, observationEnd };
+const endpoints = express();
+
+endpoints.use(citiesEnd);
+endpoints.use(observationEnd);
+
+export default endpoints;

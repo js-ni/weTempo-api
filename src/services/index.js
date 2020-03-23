@@ -8,7 +8,7 @@
 
 //#region endpoint
 import * as citiesSvc from "./cities";
-import * as observationsSvc from "./observation";
+import * as observationsSvc from "./observations";
 //#endregion
 
 export { citiesSvc, observationsSvc };
