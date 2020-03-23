@@ -24,6 +24,10 @@ const { observationsRt } = routes;
  * @param {STRING} url  - url for express verb
  * @param {Fn} function - closure
  */
-endpoint.get(observationsRt.all, (req, res) => {});
+endpoint.get(observationsRt.all, (req, res) =>
+  observationsSvc.allObservations().then(resp => {
+    res.json(resp);
+  })
+);
 
 export default endpoint;
