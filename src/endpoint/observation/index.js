@@ -19,11 +19,11 @@ const citiesEnd = express();
 const { citiesRt } = routes;
 
 citiesEnd.get(citiesRt.all, (req, res) => {
+  const { coords, winSpeeds } = allCities();
+  // allCities().then(({ text }) => {
   //   //#region TODO: send this logic to a common context
   //   //this context should return the array of object with
   //   //each city info
-  const { coords, winSpeeds } = allCities();
-  // allCities().then(({ text }) => {
   //   const $ = cheerio.load(text);
   //   const coords = [],
   //     winSpeeds = [];
