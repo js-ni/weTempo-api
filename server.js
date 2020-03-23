@@ -9,7 +9,7 @@
 //#region lib
 import express from "express";
 import bodyParser from "body-parser";
-import endpoints from "./src/endpoint";
+import * as endpoints from "./src/endpoint";
 //#endregion
 
 const app = express();

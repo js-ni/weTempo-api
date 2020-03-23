@@ -1,6 +1,6 @@
 /**
- * @name Rest/Endpoint
- * @memberof rest/endpoint
+ * @name Rest/Endpoint/Observations
+ * @memberof Rest/Endpoint
  * @type {Object}
  * @return {Object} List of global endpoint, define if is REST or GRAPHQL Schema
  */
@@ -12,39 +12,25 @@ import cheerio from "cheerio";
 import { routes } from "../../settings";
 //#endregion
 //#region service
-import { allCities } from "../../services/cities";
+import { observationsSvc } from "../../services";
 //#endregion
 
-const citiesEnd = express();
-const { citiesRt } = routes;
+const endpoint = express();
+const { observationsRt } = routes;
 
-citiesEnd.get(citiesRt.all, (req, res) => {
+/**
+ * @name getAllObservations
+ * @memberof Rest/Endpoint/Observations
+ * @type {GET}
+ * @param {STRING} url  - url for express verb
+ * @param {Fn} function - closure
+ */
+endpoint.get(observationsRt.all, (req, res) => {
   const { coords, winSpeeds } = allCities();
-  // allCities().then(({ text }) => {
-  //   //#region TODO: send this logic to a common context
-  //   //this context should return the array of object with
-  //   //each city info
-  //   const $ = cheerio.load(text);
-  //   const coords = [],
-  //     winSpeeds = [];
-  //   $("tbody tr td:first-child").each((i, el) => {
-  //     coords.push(el.children[0].data);
-  //   });
-
-  //   $("tbody tr td:last-child").each((i, el) => {
-  //     winSpeeds.push(el.children[0].data);
-  //   });
-  //   //#endregion
-
-  //   res.json({
-  //     coords,
-  //     winSpeeds
-  //   });
-  // });
   res.json({
     coords,
     winSpeeds
   });
 });
 
-export default citiesEnd;
+export default endpoint;

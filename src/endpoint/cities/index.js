@@ -1,6 +1,6 @@
 /**
  * @name Rest/Endpoint/Cities
- * @memberof rest/endpoint
+ * @memberof Rest/Endpoint
  * @type {Object}
  * @return {Object} List of global endpoint, define if is REST or GRAPHQL Schema
  * @since v1.0.0
@@ -8,16 +8,16 @@
  */
 //#region lib
 import express from "express";
-import cheerio from "cheerio";
 //#endregion
 //#region settings
 import { routes } from "../../settings";
 //#endregion
 //#region service
-import { allCities, addCity } from "../../services/cities";
+import { citiesSvc } from "../../services";
 //#endregion
 
-const citiesEnd = express();
+const endpoint = express();
+const { allCities, addCity } = citiesSvc;
 const { citiesRt } = routes;
 
 /**
@@ -27,8 +27,8 @@ const { citiesRt } = routes;
  * @param {STRING} url  - url for express verb
  * @param {Fn} function - closure
  */
-citiesEnd.get(citiesRt.all, (req, res) => {
-  //   //#region TODO: send this logic to a common context
+endpoint.get(citiesRt.all, (req, res) => {
+  //   //#region TODO: move this logic to a common utility context
   //   //this context should return the array of object with
   //   //each city info
   const { coords, winSpeeds } = allCities();
@@ -56,7 +56,14 @@ citiesEnd.get(citiesRt.all, (req, res) => {
   });
 });
 
-citiesEnd.post(citiesRt.add, (req, res) => {
+/**
+ * @name AddNewCity
+ * @memberof Rest/Endpoint/Cities
+ * @type {POST}
+ * @param {STRING} url  - url for express verb
+ * @param {Fn} function - closure
+ */
+endpoint.post(citiesRt.add, (req, res) => {
   let {
     body: { model }
   } = req;
@@ -65,4 +72,4 @@ citiesEnd.post(citiesRt.add, (req, res) => {
   });
 });
 
-export default citiesEnd;
+export default endpoint;
