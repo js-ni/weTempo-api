@@ -16,6 +16,7 @@ import { observationsSvc } from "../../services";
 
 const endpoint = express();
 const { observationsRt } = routes;
+const { allObservations, addObservation } = observationsSvc;
 
 /**
  * @name getAllObservations
@@ -25,9 +26,25 @@ const { observationsRt } = routes;
  * @param {Fn} function - closure
  */
 endpoint.get(observationsRt.all, (req, res) =>
-  observationsSvc.allObservations().then(resp => {
+  allObservations().then(resp => {
     res.json(resp);
   })
 );
+
+/**
+ * @name AddNewObservation
+ * @memberof Rest/Endpoint/Observations
+ * @type {POST}
+ * @param {STRING} url  - url for express verb
+ * @param {Fn} function - closure
+ */
+endpoint.post(observationsRt.add, (req, res) => {
+  let {
+    body: { model }
+  } = req;
+  addObservation(model).then(resp => {
+    res.json(resp);
+  });
+});
 
 export default endpoint;
