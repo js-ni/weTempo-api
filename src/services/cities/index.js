@@ -10,6 +10,11 @@
 //#region lib
 // import request from "superagent";
 //#endregion
+//#region models
+import models from "../../db/models";
+//#endregion
+
+const { Cities } = models;
 
 const resultScraping = {
   coords: [
@@ -41,5 +46,5 @@ const resultScraping = {
 // export const allCities = async () =>
 //   await request.get("https://app.deta.sh/hw6g4zdvlmao/");
 export const allCities = () => resultScraping;
-
-export const test = () => {};
+// TODO: add common action service in v1.1.0 release
+export const addCity = async cityModel => await Cities.create(cityModel);

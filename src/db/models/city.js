@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       id: {
         allowNull: false,
         autoIncrement: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        primaryKey: true
       },
       uuid: {
         allowNull: false,
@@ -15,22 +16,22 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4
       },
       name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true
       },
       flagUrl: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
         unique: true
       },
       cardinal: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true
       },
       winSpeed: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
       }
     },

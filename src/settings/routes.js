@@ -5,5 +5,6 @@ const baseRestUrl = `${baseApi}${rest}${v1}`;
 const citiesUrl = `${baseRestUrl}/cities`;
 
 export const citiesRt = {
-  all: `${citiesUrl}`
+  all: `${citiesUrl}`,
+  add: `${citiesUrl}`
 };

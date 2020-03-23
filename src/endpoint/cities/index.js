@@ -1,8 +1,10 @@
 /**
- * @name Rest/Endpoint
+ * @name Rest/Endpoint/Cities
  * @memberof rest/endpoint
  * @type {Object}
  * @return {Object} List of global endpoint, define if is REST or GRAPHQL Schema
+ * @since v1.0.0
+ * @author boykland/clenondavis <clenondavis@outlook.com>
  */
 //#region lib
 import express from "express";
@@ -12,12 +14,19 @@ import cheerio from "cheerio";
 import { routes } from "../../settings";
 //#endregion
 //#region service
-import { allCities } from "../../services/cities";
+import { allCities, addCity } from "../../services/cities";
 //#endregion
 
 const citiesEnd = express();
 const { citiesRt } = routes;
 
+/**
+ * @name getAllCities
+ * @memberof Rest/Endpoint/Cities
+ * @type {GET}
+ * @param {STRING} url  - url for express verb
+ * @param {Fn} function - closure
+ */
 citiesEnd.get(citiesRt.all, (req, res) => {
   //   //#region TODO: send this logic to a common context
   //   //this context should return the array of object with
@@ -44,6 +53,15 @@ citiesEnd.get(citiesRt.all, (req, res) => {
   res.json({
     coords,
     winSpeeds
+  });
+});
+
+citiesEnd.post(citiesRt.add, (req, res) => {
+  let {
+    body: { model }
+  } = req;
+  addCity(model).then(resp => {
+    res.json(resp);
   });
 });
 

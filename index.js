@@ -3,7 +3,7 @@
  * @class Base File
  * @classdesc Interface to comunicate with the API.
  * @since v1.0.0
- * @author boyk <clenondavis@outlook.com>
+ * @author boykland/clenondavis <clenondavis@outlook.com>
  */
 require("@babel/register");
 require("@babel/polyfill");

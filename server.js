@@ -3,7 +3,7 @@
  * @class Base server file
  * @classdesc Interface to comunicate with the API.
  * @since v1.0.0
- * @author boyk <clenondavis@outlook.com>
+ * @author boykland/clenondavis <clenondavis@outlook.com>
  */
 
 //#region lib

@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       id: {
         allowNull: false,
         autoIncrement: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        primaryKey: true
       },
       uuid: {
         allowNull: false,
@@ -15,20 +16,20 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4
       },
       text: {
-        type: Sequelize.TEXT,
+        type: DataTypes.TEXT,
         allowNull: false
       },
       date: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
+        defaultValue: DataTypes.NOW
       },
       userId: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         references: { model: "Users", key: "id" }
       },
       cityId: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         references: { model: "Cities", key: "id" }
       }
     },
