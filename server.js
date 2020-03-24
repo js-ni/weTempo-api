@@ -10,12 +10,14 @@
 import express from "express";
 import bodyParser from "body-parser";
 import endpoints from "./src/endpoint";
+import cors from "cors";
 //#endregion
 
 const app = express();
 const port = process.env.PORT || 7000;
 
 // app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(endpoints);
