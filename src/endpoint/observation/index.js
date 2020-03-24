@@ -25,11 +25,14 @@ const { allObservations, addObservation } = observationsSvc;
  * @param {STRING} url  - url for express verb
  * @param {Fn} function - closure
  */
-endpoint.get(observationsRt.all, (req, res) =>
-  allObservations().then(resp => {
+endpoint.get(observationsRt.all, (req, res) => {
+  const {
+    body: { filter }
+  } = req;
+  allObservations(filter).then(resp => {
     res.json(resp);
-  })
-);
+  });
+});
 
 /**
  * @name AddNewObservation

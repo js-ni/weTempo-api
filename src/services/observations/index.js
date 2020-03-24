@@ -23,7 +23,10 @@ import { Observations } from "../../db/models";
  * @description Get the list of observations in the database
  * @return {ARRAY} - All observations
  */
-export const allObservations = async () => await Observations.findAll();
+export const allObservations = async filter =>
+  await Observations.findAll({
+    where: filter
+  });
 
 // TODO: add common action service in v1.1.0 release
 /**
