@@ -8,6 +8,7 @@
  */
 
 //#region lib
+import request from "superagent";
 //#endregion
 //#region models
 import { Cities } from "../../db/models";
@@ -40,6 +41,29 @@ const resultScraping = {
   ]
 };
 
+const citiesData = [
+  {
+    name: "London, United Kingdom",
+    coords: "51.5074° N, 0.1278° W",
+    winSpeed: "41 kph"
+  },
+  {
+    name: "Tbilisi, Georgia",
+    coords: "51.5074° N, 0.1278° E",
+    winSpeed: "41 kph"
+  },
+  {
+    name: "Tbilisi, Georgia",
+    coords: "51.5074° N, 0.1278° E",
+    winSpeed: "41 kph"
+  },
+  {
+    name: "Mexico City, Mexico",
+    coords: "51.5074° N, 0.1278° E",
+    winSpeed: "41 kph"
+  }
+];
+
 // TODO: convert this file to ES class context, in order to add scalability and other feature benefits
 
 /**
@@ -49,9 +73,20 @@ const resultScraping = {
  * @description Scraping for static site to get cities cardinales and win speed
  * @return {ARRAY} - All cities information from scrapping static site
  */
-// export const allCities = async () =>
-//   await request.get("https://app.deta.sh/hw6g4zdvlmao/");
-export const allCities = () => resultScraping;
+export const allCities = async () =>
+  await request.get("https://app.deta.sh/hw6g4zdvlmao/");
+
+/**
+ * @name CityNameByCard
+ * @memberof Services/Cities
+ * @type {ARRAY}
+ * @description get City name
+ * @return {ARRAY} - All cities information from scrapping static site
+ */
+export const cityNameByCard = async query =>
+  await request.get(`https://app.deta.sh/hw6g4zdvlmao/lookup?${query}`);
+
+// export const allCities = () => resultScraping;
 
 // TODO: add common model action service in v1.1.0 release
 /**

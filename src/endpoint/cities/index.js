@@ -15,6 +15,9 @@ import { routes } from "../../settings";
 //#region service
 import { citiesSvc } from "../../services";
 //#endregion
+//#region common
+import { Utilities } from "../../common";
+//#endregion
 
 const endpoint = express();
 const { allCities, addCity } = citiesSvc;
@@ -28,31 +31,9 @@ const { citiesRt } = routes;
  * @param {Fn} function - closure
  */
 endpoint.get(citiesRt.all, (req, res) => {
-  //   //#region TODO: move this logic to a common utility context
-  //   //this context should return the array of object with
-  //   //each city info
-  const { coords, winSpeeds } = allCities();
-  // allCities().then(({ text }) => {
-  //   const $ = cheerio.load(text);
-  //   const coords = [],
-  //     winSpeeds = [];
-  //   $("tbody tr td:first-child").each((i, el) => {
-  //     coords.push(el.children[0].data);
-  //   });
-
-  //   $("tbody tr td:last-child").each((i, el) => {
-  //     winSpeeds.push(el.children[0].data);
-  //   });
-  //   //#endregion
-
-  //   res.json({
-  //     coords,
-  //     winSpeeds
-  //   });
-  // });
-  res.json({
-    coords,
-    winSpeeds
+  allCities().then(({ text }) => {
+    const allCitiesData = Utilities.scrappingCityData(text);
+    res.json(allCitiesData);
   });
 });
 
