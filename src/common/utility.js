@@ -63,6 +63,7 @@ export const scrappingCityData = scrapModel => {
     const queryForCityName = `${firstCardLetterToLower}=${firstCardValueWithoutLetter}&${secondCardLetterToLower}=${secondCardValueWithoutLetter}`;
 
     const cityInfo = {
+      id: idx + 1,
       queryForCityName,
       winSpeed: winSpeeds[idx],
       cardinals

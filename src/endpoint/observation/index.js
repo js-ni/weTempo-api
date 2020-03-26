@@ -45,6 +45,7 @@ endpoint.post(observationsRt.add, (req, res) => {
   let {
     body: { model }
   } = req;
+  console.log("bodyu", model);
   addObservation(model).then(resp => {
     res.json(resp);
   });
