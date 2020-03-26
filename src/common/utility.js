@@ -24,7 +24,7 @@ export const scrappingCityData = scrapModel => {
   const { cityNameByCard } = citiesSvc;
   const cards = [],
     winSpeeds = [];
-  let citiesList = [];
+  var citiesList = [];
 
   $("tbody tr td:first-child").each((i, el) => {
     cards.push(el.children[0].data);
@@ -39,7 +39,6 @@ export const scrappingCityData = scrapModel => {
     const cardSplit = cardinals.split(",");
     const firstCard = cardSplit[0];
     const secondCard = cardSplit[1];
-    let cityName = "N/D";
 
     //First city cardinal location
     const firstCardLetter = firstCard.slice(firstCard.length - 1);
@@ -72,17 +71,23 @@ export const scrappingCityData = scrapModel => {
     citiesList.push(cityInfo);
   });
 
-  const citiesListPromises = citiesList.map(cityInfo => {
-    cityNameByCard(cityInfo.queryForCityName).then(({ result }) => {
-      return {
-        name: result,
-        ...cityInfo
-      };
-    });
+  /**
+   * @name citiesListPromises
+   * @memberof scrappingCityData
+   * @type {PROMISE}
+   * @description Que the list of city name by calling url endpoint
+   * @returns {ARRAY} Array of promises
+   */
+  const citiesListPromises = citiesList.map(async cityInfo => {
+    return await cityNameByCard(cityInfo.queryForCityName).then(
+      ({ result }) => {
+        return {
+          name: result,
+          ...cityInfo
+        };
+      }
+    );
   });
 
-  Promise.all(citiesListPromises).then(resp => {
-    console.log(resp);
-  });
-  return citiesList;
+  return Promise.all(citiesListPromises);
 };

@@ -83,9 +83,13 @@ export const allCities = async () =>
  * @description get City name
  * @return {ARRAY} - All cities information from scrapping static site
  */
-export const cityNameByCard = async query =>
-  await request.get(`https://app.deta.sh/hw6g4zdvlmao/lookup?${query}`);
-
+export const cityNameByCard = async query => {
+  return await request
+    .get(`https://app.deta.sh/hw6g4zdvlmao/lookup?${query}`)
+    .then(resp => resp.body)
+    .then(resp => resp)
+    .catch(err => console.log("err", err));
+};
 // export const allCities = () => resultScraping;
 
 // TODO: add common model action service in v1.1.0 release

@@ -32,8 +32,7 @@ const { citiesRt } = routes;
  */
 endpoint.get(citiesRt.all, (req, res) => {
   allCities().then(({ text }) => {
-    const allCitiesData = Utilities.scrappingCityData(text);
-    res.json(allCitiesData);
+    Utilities.scrappingCityData(text).then(resp => res.json(resp));
   });
 });
 
