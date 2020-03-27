@@ -35,8 +35,8 @@ export const scrappingCityData = scrapModel => {
   });
 
   cards.map((card, idx) => {
-    const cardinals = cards[idx];
-    const cardSplit = cardinals.split(",");
+    const cardinal = cards[idx];
+    const cardSplit = cardinal.split(",");
     const firstCard = cardSplit[0];
     const secondCard = cardSplit[1];
 
@@ -63,10 +63,9 @@ export const scrappingCityData = scrapModel => {
     const queryForCityName = `${firstCardLetterToLower}=${firstCardValueWithoutLetter}&${secondCardLetterToLower}=${secondCardValueWithoutLetter}`;
 
     const cityInfo = {
-      id: idx + 1,
       queryForCityName,
       winSpeed: winSpeeds[idx],
-      cardinals
+      cardinal
     };
 
     citiesList.push(cityInfo);

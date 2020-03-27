@@ -11,12 +11,13 @@ import express from "express";
 import { routes } from "../../settings";
 //#endregion
 //#region service
-import { observationsSvc } from "../../services";
+import { observationsSvc, citiesSvc } from "../../services";
 //#endregion
 
 const endpoint = express();
 const { observationsRt } = routes;
 const { allObservations, addObservation } = observationsSvc;
+const { addCity } = citiesSvc;
 
 /**
  * @name getAllObservations
@@ -43,11 +44,18 @@ endpoint.get(observationsRt.all, (req, res) => {
  */
 endpoint.post(observationsRt.add, (req, res) => {
   let {
-    body: { model }
+    body: {
+      model: { city, observation }
+    }
   } = req;
-  console.log("bodyu", model);
-  addObservation(model).then(resp => {
-    res.json(resp);
+  addCity(city).then(({ id }) => {
+    const observationToSend = {
+      cityId: id,
+      ...observation
+    };
+    addObservation(observationToSend).then(resp => {
+      res.json(resp);
+    });
   });
 });
 
